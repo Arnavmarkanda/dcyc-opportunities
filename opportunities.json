@@ -250,8 +250,8 @@
       "cost": 0,
       "tags": ["Local", "Flexible Hours", "Community", "Ongoing", "Library"],
       "description": "Douglas County Libraries offers year-round volunteer opportunities for teens including shelving books, assisting with programs, and supporting community events. Volunteer hours count toward school service requirements. Multiple branch locations available.",
-      "url": "https://www.douglascountylibraries.org/volunteering",
-      "lastVerified": "2026-03-25"
+      "url": "https://www.dcl.org/volunteer/",
+      "lastVerified": "2026-03-31"
     },
     {
       "id": "hrca_vol_2026",
@@ -270,7 +270,26 @@
       "tags": ["Local", "Events", "Community", "Highlands Ranch", "Flexible"],
       "description": "HRCA hosts over 200 community events per year and relies on youth volunteers to assist with setup, registration, activities, and cleanup. Great way to build leadership and community connections in Highlands Ranch.",
       "url": "https://www.hrcaonline.org/about/volunteer",
-      "lastVerified": "2026-03-25"
+      "lastVerified": "2026-03-31"
+    },
+    {
+      "id": "a_little_help_vol",
+      "category": "volunteer",
+      "title": "Neighbor Volunteer",
+      "organization": "A Little Help",
+      "location": "Douglas County, CO",
+      "isRemote": false,
+      "dateAdded": "2026-03-31",
+      "deadline": null,
+      "startDate": null,
+      "endDate": null,
+      "ageRange": { "min": 13, "max": 22 },
+      "isPaid": false,
+      "cost": 0,
+      "tags": ["Seniors", "Community", "Flexible", "Local", "Intergenerational"],
+      "description": "A Little Help connects volunteers of all ages with older adults who need support staying independent at home. Volunteers help with rides, yard work, errands, snow shoveling, tech help, and friendly check-in calls. Flexible commitment — a few hours a week or month works.",
+      "url": "https://alittlehelp.org/how-we-help/volunteers",
+      "lastVerified": "2026-03-31"
     },
     {
       "id": "habitat_smd_vol_2026",
