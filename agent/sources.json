@@ -1,0 +1,164 @@
+[
+  {
+    "id": "mit_bwsi_2026",
+    "url": "https://beaverworks.ll.mit.edu/CMS/bw/bwsi",
+    "category": "summer_program",
+    "title": "Beaver Works Summer Institute (BWSI)"
+  },
+  {
+    "id": "stanford_ohs_summer_2026",
+    "url": "https://summerinstitutes.spcs.stanford.edu",
+    "category": "summer_program",
+    "title": "Stanford Pre-Collegiate Summer Institutes"
+  },
+  {
+    "id": "yale_yygs_2026",
+    "url": "https://globalscholars.yale.edu",
+    "category": "summer_program",
+    "title": "Yale Young Global Scholars (YYGS)"
+  },
+  {
+    "id": "jhu_cty_2026",
+    "url": "https://cty.jhu.edu/summer",
+    "category": "summer_program",
+    "title": "Johns Hopkins CTY Summer Programs"
+  },
+  {
+    "id": "cmu_precollege_2026",
+    "url": "https://www.cmu.edu/pre-college",
+    "category": "summer_program",
+    "title": "Carnegie Mellon Pre-College Programs"
+  },
+  {
+    "id": "brown_precollege_2026",
+    "url": "https://precollege.brown.edu",
+    "category": "summer_program",
+    "title": "Brown Pre-College Programs"
+  },
+  {
+    "id": "cu_boulder_summer_2026",
+    "url": "https://www.colorado.edu/precollege",
+    "category": "summer_program",
+    "title": "CU Boulder Pre-Collegiate Development Program"
+  },
+  {
+    "id": "mines_summer_2026",
+    "url": "https://www.mines.edu/undergraduate-admissions/mesp",
+    "category": "summer_program",
+    "title": "Minority Engineering Summer Program (MESP)"
+  },
+  {
+    "id": "cu_anschutz_summer_2026",
+    "url": "https://www.cuanschutz.edu",
+    "category": "summer_program",
+    "title": "Summer Medical Pipeline Program"
+  },
+  {
+    "id": "aea_2026",
+    "url": "https://celt.dpsk12.org/o/celt/page/achieving-excellence-academy",
+    "category": "summer_program",
+    "title": "Achieving Excellence Academy"
+  },
+  {
+    "id": "black_issues_forum_2026",
+    "url": "https://admissions.colostate.edu/visits-events/black-issues-forum/",
+    "category": "summer_program",
+    "title": "Black Issues Forum"
+  },
+  {
+    "id": "csu_cyber_security_camp_2026",
+    "url": "https://csucybercamp.cs.colostate.edu/",
+    "category": "summer_program",
+    "title": "Cyber Security Camp"
+  },
+  {
+    "id": "envision_csu_2026",
+    "url": "https://www.engr.colostate.edu/outreach/summer/",
+    "category": "summer_program",
+    "title": "ENvision Summer Engineering Program"
+  },
+  {
+    "id": "scivet_csu_2026",
+    "url": "https://www.cns-eoc.colostate.edu/scivet/",
+    "category": "summer_program",
+    "title": "SciVet — Veterinary Science Program"
+  },
+  {
+    "id": "summer_science_astrophysics_2026",
+    "url": "https://summerscience.org/",
+    "category": "summer_program",
+    "title": "Summer Science Program in Astrophysics"
+  },
+  {
+    "id": "cu_aerospace_2026",
+    "url": "https://www.colorado.edu/sciencediscovery/aerospace-grades-9-12",
+    "category": "summer_program",
+    "title": "CU Science Discovery — Aerospace Engineering"
+  },
+  {
+    "id": "cu_cs_robots_2026",
+    "url": "https://www.colorado.edu/sciencediscovery/computer-science-and-robotics-grades-9-12",
+    "category": "summer_program",
+    "title": "CU Science Discovery — Computer Science and Robots"
+  },
+  {
+    "id": "summet_mines_2026",
+    "url": "https://www.mines.edu/undergraduate-admissions/summer-multicultural-engineering-training-summet/",
+    "category": "summer_program",
+    "title": "Summer Multicultural Engineering Training (SUMMET)"
+  },
+  {
+    "id": "nrel_intern_2026",
+    "url": "https://www.nrel.gov/careers/intern-high-school.html",
+    "category": "internship",
+    "title": "High School Internship Program (HSIP)"
+  },
+  {
+    "id": "dc_gov_intern",
+    "url": "https://www.douglas.co.us/government/departments/human-resources/employment",
+    "category": "internship",
+    "title": "County Government Summer Internship"
+  },
+  {
+    "id": "dmns_intern",
+    "url": "https://www.dmns.org/education/teens",
+    "category": "internship",
+    "title": "Teen Science Café Internship"
+  },
+  {
+    "id": "childrens_hosp_vol",
+    "url": "https://www.childrenscolorado.org/community/volunteer",
+    "category": "volunteer",
+    "title": "Junior Volunteer Program"
+  },
+  {
+    "id": "dc_libraries_vol",
+    "url": "https://www.douglascountylibraries.org/volunteering",
+    "category": "volunteer",
+    "title": "Youth Volunteer Program"
+  },
+  {
+    "id": "habitat_vol",
+    "url": "https://www.habitatsmd.org/volunteer",
+    "category": "volunteer",
+    "title": "Build Day Volunteer"
+  },
+  {
+    "id": "humane_colorado_vol",
+    "url": "https://humanecolorado.org/volunteer/",
+    "category": "volunteer",
+    "title": "Youth Volunteer & Summer Teen Program"
+  },
+  {
+    "id": "backpack_society_vol",
+    "url": "https://www.backpacksociety.org/high-school-volunteer",
+    "category": "volunteer",
+    "title": "High School Community Service Program"
+  },
+  {
+    "id": "foundation_dcs_vol",
+    "url": "https://www.foundationdcs.org/volunteer",
+    "category": "volunteer",
+    "title": "Foundation for Douglas County Schools Volunteer"
+  }
+]
