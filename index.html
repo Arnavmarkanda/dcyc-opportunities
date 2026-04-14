@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DCYC Opportunities Hub — Douglas County Youth Commission</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy:#0B1B35;--navy-mid:#122040;--navy-light:#1A2E57;
+  --lime:#B8FF57;--lime-dim:#9EE03A;--lime-pale:rgba(184,255,87,0.12);
+  --white:#FFFFFF;--off-white:#F5F4EF;
+  --gray-100:#EAE9E3;--gray-300:#BFBDB5;--gray-500:#7A7870;
+  --card-bg:#FFFFFF;--card-border:rgba(11,27,53,0.09);
+  --text-primary:#0B1B35;--text-secondary:#5A5750;--text-muted:#9A9890;
+  --tag-job:#E8F4FF;--tag-job-text:#1254A0;
+  --tag-intern:#F0EAFF;--tag-intern-text:#5428C8;
+  --tag-vol:#E6F8EE;--tag-vol-text:#1A7A40;
+  --tag-summer:#FFF5E0;--tag-summer-text:#9A5A00;
+  --shadow-sm:0 1px 3px rgba(11,27,53,0.08);
+  --shadow-md:0 4px 16px rgba(11,27,53,0.10);
+  --shadow-lg:0 12px 40px rgba(11,27,53,0.14);
+  --radius-sm:8px;--radius-md:14px;--radius-lg:20px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--text-primary);min-height:100vh;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,27,53,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(184,255,87,0.15);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-mark{width:34px;height:34px;background:var(--lime);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:var(--navy);flex-shrink:0;}
+.nav-logo-text{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--white);}
+.nav-logo-text span{color:var(--lime);}
+.nav-links{display:flex;align-items:center;gap:4px;}
+.nav-link{padding:6px 14px;border-radius:8px;font-size:13.5px;color:rgba(255,255,255,0.65);text-decoration:none;transition:all 0.18s;}
+.nav-link:hover{color:var(--white);background:rgba(255,255,255,0.07);}
+.nav-link.active{color:var(--lime);background:var(--lime-pale);}
+.nav-saved{display:flex;align-items:center;gap:6px;padding:7px 16px;background:var(--lime);color:var(--navy);border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all 0.18s;margin-left:12px;}
+.nav-saved:hover{background:var(--lime-dim);transform:translateY(-1px);}
+.saved-count{background:var(--navy);color:var(--lime);border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:700;display:none;align-items:center;justify-content:center;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:2px;transition:all 0.2s;}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(11,27,53,0.98);padding:1rem;z-index:99;flex-direction:column;gap:4px;border-bottom:1px solid rgba(184,255,87,0.15);}
+.mobile-menu.open{display:flex;}
+.mobile-nav-link{padding:12px 16px;color:rgba(255,255,255,0.75);text-decoration:none;font-size:15px;border-radius:8px;transition:all 0.15s;}
+.mobile-nav-link:hover,.mobile-nav-link.active{color:var(--lime);background:var(--lime-pale);}
+
+/* HERO */
+.hero{background:var(--navy);min-height:480px;padding:120px 2rem 70px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(184,255,87,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(184,255,87,0.06) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 40%,transparent 100%);}
+.hero-glow{position:absolute;width:600px;height:400px;background:radial-gradient(ellipse,rgba(184,255,87,0.12) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:780px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--lime-pale);border:1px solid rgba(184,255,87,0.25);border-radius:100px;padding:6px 16px;font-size:12px;font-weight:500;color:var(--lime);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:24px;animation:fadeUp 0.6s ease both;}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+.hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.2rem,5vw,3.8rem);color:var(--white);line-height:1.1;letter-spacing:-0.03em;margin-bottom:20px;animation:fadeUp 0.6s 0.1s ease both;}
+.hero-title .accent{color:var(--lime);}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.55);font-weight:300;line-height:1.7;max-width:560px;margin:0 auto 40px;animation:fadeUp 0.6s 0.2s ease both;}
+.hero-stats{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;animation:fadeUp 0.6s 0.3s ease both;}
+.hero-stat{text-align:center;}
+.hero-stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.9rem;color:var(--lime);line-height:1;margin-bottom:4px;}
+.hero-stat-label{font-size:11px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.06em;}
+.hero-divider{width:1px;height:36px;background:rgba(255,255,255,0.12);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* SEARCH */
+.search-section{background:var(--navy);padding:0 2rem 48px;display:flex;justify-content:center;}
+.search-bar-wrap{width:100%;max-width:720px;position:relative;animation:fadeUp 0.6s 0.35s ease both;}
+.search-icon{position:absolute;left:20px;top:50%;transform:translateY(-50%);color:var(--gray-300);pointer-events:none;font-size:18px;}
+.search-input{width:100%;padding:18px 20px 18px 52px;background:rgba(255,255,255,0.07);border:1px solid rgba(184,255,87,0.2);border-radius:var(--radius-lg);font-size:15px;font-family:'DM Sans',sans-serif;color:var(--white);outline:none;transition:all 0.2s;}
+.search-input::placeholder{color:rgba(255,255,255,0.3);}
+.search-input:focus{border-color:rgba(184,255,87,0.5);background:rgba(255,255,255,0.1);box-shadow:0 0 0 4px rgba(184,255,87,0.08);}
+
+/* MAIN */
+main{max-width:1240px;margin:0 auto;padding:48px 2rem 80px;}
+
+/* TABS */
+.tabs-section{margin-bottom:24px;display:flex;flex-wrap:wrap;align-items:center;gap:12px;}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;flex:1;}
+.tab{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:100px;border:1.5px solid var(--card-border);background:var(--white);color:var(--text-secondary);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.18s;box-shadow:var(--shadow-sm);}
+.tab:hover{border-color:var(--navy-light);color:var(--text-primary);transform:translateY(-1px);}
+.tab.active{background:var(--navy);border-color:var(--navy);color:var(--lime);}
+.tab-count{font-size:11px;font-weight:600;padding:2px 7px;border-radius:100px;background:var(--gray-100);color:var(--text-secondary);transition:all 0.18s;}
+.tab.active .tab-count{background:var(--lime-pale);color:var(--lime);}
+.results-info{font-size:13px;color:var(--text-muted);white-space:nowrap;}
+.results-info strong{color:var(--text-primary);font-weight:500;}
+
+/* FILTERS */
+.filter-section{background:var(--white);border:1px solid var(--card-border);border-radius:var(--radius-md);padding:16px 20px;margin-bottom:28px;display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;}
+.filter-group{display:flex;flex-direction:column;gap:8px;}
+.filter-group-label{font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;}
+.filter-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.filter-chip{padding:5px 12px;border-radius:100px;border:1px solid var(--card-border);background:var(--off-white);color:var(--text-secondary);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;transition:all 0.15s;}
+.filter-chip:hover{border-color:var(--navy-light);color:var(--text-primary);}
+.filter-chip.active{background:var(--navy);border-color:var(--navy);color:var(--lime);font-weight:500;}
+
+/* GRID */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px;}
+
+/* CARD */
+.card{background:var(--card-bg);border-radius:var(--radius-lg);border:1px solid var(--card-border);padding:22px;box-shadow:var(--shadow-sm);transition:all 0.22s;display:flex;flex-direction:column;gap:12px;animation:cardIn 0.4s ease both;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--radius-lg) var(--radius-lg) 0 0;opacity:0;transition:opacity 0.22s;}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:rgba(11,27,53,0.14);}
+.card:hover::before{opacity:1;}
+.card[data-cat="job"]::before{background:var(--tag-job-text);}
+.card[data-cat="internship"]::before{background:var(--tag-intern-text);}
+.card[data-cat="volunteer"]::before{background:var(--tag-vol-text);}
+.card[data-cat="summer_program"]::before{background:var(--tag-summer-text);}
+@keyframes cardIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
+.card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--text-primary);line-height:1.35;flex:1;}
+.save-btn{width:32px;height:32px;border-radius:8px;border:1px solid var(--card-border);background:var(--off-white);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all 0.18s;flex-shrink:0;color:var(--text-muted);}
+.save-btn:hover{background:var(--gray-100);}
+.save-btn.saved{background:#FFF3E0;border-color:#FFB74D;color:#E65100;}
+.card-org{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:5px;}
+.card-org-dot{width:4px;height:4px;border-radius:50%;background:var(--gray-300);flex-shrink:0;}
+.card-meta{display:flex;flex-wrap:wrap;gap:6px;}
+.meta-pill{display:flex;align-items:center;gap:4px;font-size:11.5px;color:var(--text-secondary);background:var(--off-white);border-radius:6px;padding:3px 8px;}
+.cat-badge{display:inline-flex;align-items:center;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:600;}
+.cat-badge.job{background:var(--tag-job);color:var(--tag-job-text);}
+.cat-badge.internship{background:var(--tag-intern);color:var(--tag-intern-text);}
+.cat-badge.volunteer{background:var(--tag-vol);color:var(--tag-vol-text);}
+.cat-badge.summer_program{background:var(--tag-summer);color:var(--tag-summer-text);}
+.area-badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:100px;font-size:10.5px;font-weight:500;background:rgba(11,27,53,0.07);color:var(--navy-light);}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.tag{font-size:10.5px;padding:2px 8px;border-radius:5px;background:var(--gray-100);color:var(--text-secondary);font-weight:500;}
+.card-desc{font-size:13px;color:var(--text-secondary);line-height:1.65;flex:1;}
+.card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--gray-100);gap:8px;}
+.paid-badge{font-size:11px;font-weight:600;padding:3px 9px;border-radius:6px;}
+.paid-yes{background:#E6F8EE;color:#1A7A40;}
+.paid-no{background:var(--gray-100);color:var(--text-muted);}
+.new-badge{font-size:10px;font-weight:700;background:var(--lime);color:var(--navy);padding:2px 7px;border-radius:4px;letter-spacing:0.05em;text-transform:uppercase;}
+.apply-btn{display:inline-flex;align-items:center;gap:5px;padding:8px 16px;background:var(--navy);color:var(--white);border-radius:var(--radius-sm);font-size:12.5px;font-weight:600;text-decoration:none;font-family:'DM Sans',sans-serif;transition:all 0.18s;border:none;cursor:pointer;}
+.apply-btn:hover{background:var(--navy-light);transform:translateY(-1px);}
+
+/* EMPTY */
+.empty-state{grid-column:1/-1;text-align:center;padding:80px 20px;}
+.empty-icon{font-size:48px;margin-bottom:16px;}
+.empty-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:var(--text-primary);margin-bottom:8px;}
+.empty-sub{font-size:14px;color:var(--text-muted);}
+
+/* SAVED PANEL */
+.saved-overlay{position:fixed;inset:0;background:rgba(11,27,53,0.5);z-index:200;display:none;backdrop-filter:blur(4px);}
+.saved-panel{position:fixed;top:0;right:0;bottom:0;width:min(480px,95vw);background:var(--white);z-index:201;box-shadow:-8px 0 40px rgba(11,27,53,0.15);display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.3s cubic-bezier(0.22,1,0.36,1);}
+.saved-panel.open{transform:translateX(0);}
+.saved-overlay.open{display:block;}
+.saved-panel-header{padding:24px 24px 20px;border-bottom:1px solid var(--gray-100);display:flex;align-items:center;justify-content:space-between;background:var(--navy);}
+.saved-panel-title{font-family:'Syne',sans-serif;font-weight:700;font-size:18px;color:var(--white);}
+.close-btn{width:36px;height:36px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:transparent;color:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;transition:all 0.15s;}
+.close-btn:hover{background:rgba(255,255,255,0.1);}
+.saved-list{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;}
+.saved-item{padding:14px 16px;border-radius:var(--radius-md);border:1px solid var(--card-border);display:flex;align-items:flex-start;gap:12px;text-decoration:none;transition:all 0.15s;background:var(--white);}
+.saved-item:hover{border-color:var(--navy-light);background:var(--off-white);transform:translateX(-2px);}
+.saved-item-info{flex:1;}
+.saved-item-title{font-family:'Syne',sans-serif;font-weight:600;font-size:13.5px;color:var(--text-primary);margin-bottom:4px;}
+.saved-item-org{font-size:11.5px;color:var(--text-muted);}
+.saved-item-arrow{font-size:14px;color:var(--text-muted);padding-top:2px;}
+.unsave-btn{width:26px;height:26px;border-radius:6px;border:1px solid var(--card-border);background:var(--off-white);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-muted);transition:all 0.15s;flex-shrink:0;}
+.unsave-btn:hover{background:#FFE8E8;border-color:#FFAAAA;color:#C0392B;}
+.saved-empty{text-align:center;padding:60px 20px;color:var(--text-muted);}
+.saved-empty-icon{font-size:40px;margin-bottom:12px;}
+.saved-empty-text{font-size:14px;}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,0.45);text-align:center;padding:28px 2rem;font-size:13px;border-top:1px solid rgba(184,255,87,0.1);}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:0 1rem;}
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .hero{padding:90px 1rem 50px;min-height:400px;}
+  .hero-stats{gap:20px;}
+  .hero-divider{height:28px;}
+  .search-section{padding:0 1rem 32px;}
+  main{padding:32px 1rem 60px;}
+  .cards-grid{grid-template-columns:1fr;}
+  .tabs{gap:4px;}
+  .tab{font-size:12px;padding:8px 12px;}
+  .tab-icon{display:none;}
+  .filter-section{flex-direction:column;gap:12px;padding:14px 16px;}
+  .hero-title{font-size:clamp(1.8rem,7vw,2.5rem);}
+  .hero-sub{font-size:0.9rem;}
+}
+@media(max-width:480px){
+  .hero-stats{gap:14px;}
+  .hero-stat-num{font-size:1.5rem;}
+  .hero-stat-label{font-size:10px;}
+  .hero-divider{height:24px;}
+  .nav-saved span:not(.saved-count){display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">DC</div>
+    <span class="nav-logo-text">DCYC <span>Opportunities</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="#" class="nav-link active" data-cat="all">All</a>
+    <a href="#" class="nav-link" data-cat="summer_program">Summer Programs</a>
+    <a href="#" class="nav-link" data-cat="internship">Internships</a>
+    <a href="#" class="nav-link" data-cat="job">Jobs</a>
+    <a href="#" class="nav-link" data-cat="volunteer">Volunteer</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="nav-saved" id="savedBtn">
+      <span>&#11088;</span> Saved
+      <span class="saved-count" id="savedCount">0</span>
+    </button>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" class="mobile-nav-link active" data-cat="all">All Opportunities</a>
+  <a href="#" class="mobile-nav-link" data-cat="summer_program">Summer Programs</a>
+  <a href="#" class="mobile-nav-link" data-cat="internship">Internships</a>
+  <a href="#" class="mobile-nav-link" data-cat="job">Jobs</a>
+  <a href="#" class="mobile-nav-link" data-cat="volunteer">Volunteer</a>
+</div>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-dot"></div>
+      Douglas County Youth Commission
+    </div>
+    <h1 class="hero-title">Your Future Starts<br/><span class="accent">Right Here.</span></h1>
+    <p class="hero-sub">Internships, summer programs, jobs, and volunteer opportunities across Douglas County and Highlands Ranch.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num" id="statSummer">-</div><div class="hero-stat-label">Summer Programs</div></div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat"><div class="hero-stat-num" id="statIntern">-</div><div class="hero-stat-label">Internships</div></div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat"><div class="hero-stat-num" id="statJobs">-</div><div class="hero-stat-label">Jobs</div></div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat"><div class="hero-stat-num" id="statVol">-</div><div class="hero-stat-label">Volunteer</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="search-section">
+  <div class="search-bar-wrap">
+    <div class="search-icon">&#128269;</div>
+    <input type="text" class="search-input" id="searchInput" placeholder="Search programs, organizations, or keywords..."/>
+  </div>
+</div>
+
+<main>
+  <div class="tabs-section">
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-cat="all"><span class="tab-icon">&#10022;</span> All <span class="tab-count" id="count-all">-</span></button>
+      <button class="tab" data-cat="summer_program"><span class="tab-icon">&#9728;</span> Summer Programs <span class="tab-count" id="count-summer_program">-</span></button>
+      <button class="tab" data-cat="internship"><span class="tab-icon">&#128188;</span> Internships <span class="tab-count" id="count-internship">-</span></button>
+      <button class="tab" data-cat="job"><span class="tab-icon">&#9889;</span> Jobs <span class="tab-count" id="count-job">-</span></button>
+      <button class="tab" data-cat="volunteer"><span class="tab-icon">&#9825;</span> Volunteer <span class="tab-count" id="count-volunteer">-</span></button>
+    </div>
+    <div class="results-info" id="resultsInfo"></div>
+  </div>
+
+  <div class="filter-section">
+    <div class="filter-group">
+      <div class="filter-group-label">Status</div>
+      <div class="filter-chips">
+        <button class="filter-chip active" data-filter="all">All</button>
+        <button class="filter-chip" data-filter="paid">Paid Only</button>
+        <button class="filter-chip" data-filter="free">Free / No Cost</button>
+        <button class="filter-chip" data-filter="remote">Remote</button>
+      </div>
+    </div>
+    <div class="filter-group">
+      <div class="filter-group-label">Area</div>
+      <div class="filter-chips">
+        <button class="filter-chip active-area" data-area="all">All Areas</button>
+        <button class="filter-chip" data-area="Highlands Ranch">Highlands Ranch</button>
+        <button class="filter-chip" data-area="Castle Rock">Castle Rock</button>
+        <button class="filter-chip" data-area="Lone Tree">Lone Tree</button>
+        <button class="filter-chip" data-area="Parker">Parker</button>
+        <button class="filter-chip" data-area="Castle Pines">Castle Pines</button>
+      </div>
+    </div>
+    <div class="filter-group">
+      <div class="filter-group-label">Time Commitment</div>
+      <div class="filter-chips">
+        <button class="filter-chip active-time" data-time="all">Any</button>
+        <button class="filter-chip" data-time="summer">Summer Only</button>
+        <button class="filter-chip" data-time="yearround">Year-Round</button>
+        <button class="filter-chip" data-time="weekend">Weekends</button>
+        <button class="filter-chip" data-time="seasonal">Seasonal</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-grid" id="cardsGrid"></div>
+</main>
+
+<div class="saved-overlay" id="savedOverlay"></div>
+<div class="saved-panel" id="savedPanel">
+  <div class="saved-panel-header">
+    <span class="saved-panel-title">&#11088; Saved Opportunities</span>
+    <button class="close-btn" id="closePanel">&#10005;</button>
+  </div>
+  <div class="saved-list" id="savedList"></div>
+</div>
+
+<footer>
+  <p>Douglas County Youth Commission Opportunities Hub &nbsp;&middot;&nbsp; Highlands Ranch, CO</p>
+  <p style="margin-top:8px">Data updated regularly. Always verify deadlines directly with the organization.</p>
+</footer>
+
+<script>
+const opportunities = [
+  {id:"mit_bwsi_2026",cat:"summer_program",title:"Beaver Works Summer Institute (BWSI)",org:"MIT Lincoln Laboratory",location:"Cambridge, MA",area:"",isRemote:false,deadline:"Apr 1, 2026",start:"Jul 6, 2026",end:"Jul 31, 2026",age:"16-18",isPaid:false,cost:"Free",time:"summer",tags:["STEM","Engineering","Competitive","Residential"],desc:"A rigorous 4-week STEM program at MIT for rising seniors. Students tackle real engineering challenges in AI, robotics, and cybersecurity. Highly competitive with strong math and science required.",url:"https://beaverworks.ll.mit.edu/CMS/bw/bwsi",isNew:false},
+  {id:"stanford_ohs",cat:"summer_program",title:"Stanford Pre-Collegiate Summer Institutes",org:"Stanford University",location:"Stanford, CA",area:"",isRemote:false,deadline:"Apr 15, 2026",start:"Jun 22, 2026",end:"Aug 2, 2026",age:"13-18",isPaid:false,cost:"$6,500",time:"summer",tags:["Academic","Residential","Liberal Arts","STEM"],desc:"Stanford's residential summer program for intellectually curious high schoolers. Courses span math, science, humanities, and social sciences taught by Stanford faculty. Financial aid available.",url:"https://summerinstitutes.spcs.stanford.edu",isNew:false},
+  {id:"yale_yygs",cat:"summer_program",title:"Yale Young Global Scholars",org:"Yale University",location:"New Haven, CT",area:"",isRemote:false,deadline:"Mar 31, 2026",start:"Jun 14, 2026",end:"Jul 26, 2026",age:"15-17",isPaid:false,cost:"$6,000",time:"summer",tags:["Leadership","Global Issues","Competitive","Residential"],desc:"Intensive two-week academic enrichment at Yale. Tracks include Applied Science, Biological Sciences, Politics and Economics, and Sustainability. Need-based aid available.",url:"https://globalscholars.yale.edu",isNew:false},
+  {id:"jhu_cty",cat:"summer_program",title:"Johns Hopkins CTY Summer Programs",org:"Johns Hopkins University",location:"Multiple US Campuses",area:"",isRemote:false,deadline:"May 1, 2026",start:"Jun 21, 2026",end:"Aug 9, 2026",age:"12-18",isPaid:false,cost:"$5,200",time:"summer",tags:["Academic","Gifted","STEM","Humanities"],desc:"One of the most established gifted youth programs in the country. Intensive 3-week courses in math, science, writing, and humanities on college campuses. Qualification through above-grade testing required.",url:"https://cty.jhu.edu/summer",isNew:false},
+  {id:"cmu_precollege",cat:"summer_program",title:"Carnegie Mellon Pre-College Programs",org:"Carnegie Mellon University",location:"Pittsburgh, PA",area:"",isRemote:false,deadline:"Mar 15, 2026",start:"Jul 6, 2026",end:"Aug 2, 2026",age:"15-18",isPaid:false,cost:"$7,800",time:"summer",tags:["CS","Design","Engineering","Residential"],desc:"CMU offers intensive pre-college programs in computer science, design, engineering, and the arts. Students experience college-level academics in AI, game design, and architecture.",url:"https://www.cmu.edu/pre-college",isNew:false},
+  {id:"brown_precollege",cat:"summer_program",title:"Brown Pre-College Programs",org:"Brown University",location:"Providence, RI",area:"",isRemote:false,deadline:"May 15, 2026",start:"Jun 28, 2026",end:"Aug 8, 2026",age:"14-18",isPaid:false,cost:"$4,800",time:"summer",tags:["Academic","College Prep","Liberal Arts","Leadership"],desc:"Brown's pre-college offerings cover entrepreneurship, medicine, law, engineering, and the arts. Both residential and commuter options. Great for self-directed learners.",url:"https://precollege.brown.edu",isNew:false},
+  {id:"cu_boulder",cat:"summer_program",title:"CU Boulder Pre-Collegiate Program",org:"University of Colorado Boulder",location:"Boulder, CO",area:"",isRemote:false,deadline:"May 1, 2026",start:"Jun 15, 2026",end:"Jul 25, 2026",age:"13-18",isPaid:false,cost:"$1,200",time:"summer",tags:["Colorado","STEM","Arts","Affordable"],desc:"CU Boulder summer programs for Colorado youth offer hands-on learning in engineering, aerospace, media arts, and entrepreneurship. Strong value for in-state students.",url:"https://www.colorado.edu/precollege",isNew:false},
+  {id:"mines_mesp",cat:"summer_program",title:"Minority Engineering Summer Program (MESP)",org:"Colorado School of Mines",location:"Golden, CO",area:"",isRemote:false,deadline:"Apr 30, 2026",start:"Jun 8, 2026",end:"Jun 19, 2026",age:"15-18",isPaid:false,cost:"Free",time:"summer",tags:["Free","Engineering","Colorado","Diversity"],desc:"A free two-week residential engineering program for underrepresented high schoolers at Colorado School of Mines. Housing and meals covered.",url:"https://www.mines.edu/undergraduate-admissions/mesp",isNew:false},
+  {id:"cu_anschutz",cat:"summer_program",title:"CU Anschutz Summer Medical Pipeline",org:"CU Anschutz Medical Campus",location:"Aurora, CO",area:"",isRemote:false,deadline:"Apr 1, 2026",start:"Jun 22, 2026",end:"Jul 17, 2026",age:"15-18",isPaid:false,cost:"Free",time:"summer",tags:["Healthcare","Free","Colorado","Pre-Med"],desc:"CU Anschutz pipeline program introduces underrepresented high schoolers to medical and health sciences. Students attend lectures, labs, and clinical simulations on a working medical campus.",url:"https://www.cuanschutz.edu",isNew:false},
+  {id:"google_cs_first",cat:"summer_program",title:"Google CS First",org:"Google",location:"Remote / In-Person",area:"",isRemote:true,deadline:"N/A",start:"Jun 1, 2026",end:"Aug 31, 2026",age:"9-14",isPaid:false,cost:"Free",time:"summer",tags:["Coding","Free","Google","Beginner"],desc:"Google's free coding curriculum for beginners using Scratch to teach computer science fundamentals. Completely free with no prerequisites.",url:"https://csfirst.withgoogle.com",isNew:false},
+  {id:"id_tech",cat:"summer_program",title:"iD Tech Camps",org:"iD Tech",location:"Multiple Colorado Locations",area:"",isRemote:false,deadline:"N/A",start:"Jun 15, 2026",end:"Aug 15, 2026",age:"7-18",isPaid:false,cost:"$1,300",time:"summer",tags:["Coding","Game Design","AI","Robotics"],desc:"Week-long tech camps covering coding, game design, AI, and robotics. Held on college campuses across Colorado. Sibling discounts and financial aid available.",url:"https://www.idtech.com",isNew:false},
+  {id:"colorado_uplift",cat:"summer_program",title:"Colorado Uplift Youth Leadership Program",org:"Colorado Uplift",location:"Denver, CO",area:"",isRemote:false,deadline:"May 15, 2026",start:"Jun 8, 2026",end:"Jul 31, 2026",age:"13-18",isPaid:false,cost:"Free",time:"summer",tags:["Leadership","Free","Denver","Character"],desc:"Free summer programs for Denver metro youth focused on leadership, character development, and college readiness. Free meals and transportation provided.",url:"https://www.coloradouplift.org",isNew:false},
+  {id:"aws_future",cat:"summer_program",title:"AWS Future Engineer Scholarship and Internship",org:"Amazon Web Services",location:"Remote / Multiple Locations",area:"",isRemote:true,deadline:"Jan 31, 2026",start:"Jun 15, 2026",end:"Aug 15, 2026",age:"17-18",isPaid:true,cost:"Paid",time:"summer",tags:["Cloud","CS","Amazon","Scholarship"],desc:"AWS Future Engineer provides scholarships and paid summer internships at Amazon for high school seniors from underrepresented communities. Includes a $40,000 college scholarship.",url:"https://aws.amazon.com/education/awsfutureengineer",isNew:false},
+  {id:"aea_2026",cat:"summer_program",title:"Achieving Excellence Academy",org:"Denver Public Schools CELT",location:"Denver School of the Arts, Denver, CO",area:"",isRemote:false,deadline:"N/A",start:"Jun 9, 2026",end:"Jul 2, 2026",age:"14-16",isPaid:false,cost:"Free",time:"summer",tags:["Free","Diversity","Civic","Identity"],desc:"A free four-week immersive program for incoming 9th-11th graders, particularly students of color. Participants explore racial, social, and civic complexities through workshops on cultural identity and power.",url:"https://celt.dpsk12.org/o/celt/page/achieving-excellence-academy",isNew:false},
+  {id:"architecture_city",cat:"summer_program",title:"Architecture in the City",org:"University of Colorado Denver",location:"UC Denver, Denver, CO",area:"",isRemote:false,deadline:"N/A",start:"Jun 23, 2026",end:"Jul 26, 2026",age:"15-18",isPaid:false,cost:"$750",time:"summer",tags:["Architecture","Design","Urban Planning","Colorado"],desc:"Noncredit interdisciplinary program at UC Denver for high school sophomores, juniors, and seniors. Students gain hands-on experience in model building and drawing through a design-build project.",url:"https://architectureandplanning.ucdenver.edu/academics/high-school-programs",isNew:false},
+  {id:"bolt_camp",cat:"summer_program",title:"BOLT Bioengineering Opportunities and Leadership Training",org:"University of Colorado Denver",location:"UC Denver, Denver, CO",area:"",isRemote:false,deadline:"N/A",start:"Jun 2, 2026",end:"Jun 26, 2026",age:"14-18",isPaid:false,cost:"$975",time:"summer",tags:["Bioengineering","STEM","Hands-On","Colorado"],desc:"A four-day bioengineering camp at UC Denver for high schoolers in grades 9-12. Students engage in hands-on activities, explore careers, and compete in a design challenge.",url:"https://engineering.ucdenver.edu/bioengineering/outreach/bolt-camp",isNew:false},
+  {id:"lynx_filmmaking",cat:"summer_program",title:"LYNX Arts Camp Filmmaking",org:"University of Colorado Denver",location:"UC Denver, Denver, CO",area:"",isRemote:false,deadline:"May 15, 2026",start:"Jul 13, 2026",end:"Jul 25, 2026",age:"14-18",isPaid:false,cost:"Varies",time:"summer",tags:["Film","Arts","Creative","Residential"],desc:"A residential filmmaking program at UC Denver for ages 14-18. Participants create their own films from brainstorming through final screening, gaining experience in lighting, sound, and editing.",url:"https://artsandmedia.ucdenver.edu/prospective-students/lynx-camps",isNew:false},
+  {id:"black_issues_forum",cat:"summer_program",title:"Black Issues Forum",org:"Colorado State University",location:"CSU, Fort Collins, CO",area:"",isRemote:false,deadline:"Apr 21, 2026",start:"Jun 10, 2026",end:"Jun 14, 2026",age:"16-18",isPaid:false,cost:"Free",time:"summer",tags:["Free","Diversity","Leadership","CSU"],desc:"A free one-week forum at CSU for juniors and rising seniors. Students discuss Black community issues, interact with faculty, and earn a CSU credit hour.",url:"https://admissions.colostate.edu/visits-events/black-issues-forum/",isNew:false},
+  {id:"csu_dance_lab",cat:"summer_program",title:"CSU Dance Lab",org:"Colorado State University",location:"CSU, Fort Collins, CO",area:"",isRemote:false,deadline:"Jun 14, 2026",start:"Aug 3, 2026",end:"Aug 16, 2026",age:"14-22",isPaid:false,cost:"$1,400",time:"summer",tags:["Dance","Arts","Performance","CSU"],desc:"An immersive two-week dance program at CSU studying classical and contemporary dance, choreography, and theory under CSU Dance faculty and guest artists.",url:"https://dance.colostate.edu/dance-lab/",isNew:false},
+  {id:"global_business_academy",cat:"summer_program",title:"Global Business Academy",org:"Colorado State University",location:"CSU, Fort Collins, CO",area:"",isRemote:false,deadline:"Jun 1, 2026",start:"Jul 13, 2026",end:"Jul 23, 2026",age:"14-17",isPaid:false,cost:"$3,750",time:"summer",tags:["Business","Leadership","Residential","CSU"],desc:"A 10-day global business experience at CSU for freshmen, sophomores, and juniors. Students live in dorms, learn international business, tour companies, and meet executives.",url:"https://biz.colostate.edu/academics/high-school-programs/global-business-academy",isNew:false},
+  {id:"women_construction",cat:"summer_program",title:"Women in Construction Management Summer Institute",org:"Colorado State University",location:"CSU, Fort Collins, CO",area:"",isRemote:false,deadline:"Mar 15, 2026",start:"Jun 10, 2026",end:"Jun 14, 2026",age:"15-18",isPaid:false,cost:"$25",time:"summer",tags:["Engineering","Women","Construction","CSU"],desc:"A five-day residential program at CSU for female students interested in architecture, engineering, and construction careers. Mentored by professional women in AEC industries.",url:"https://www.chhs.colostate.edu/cm/programs-and-degrees/b-s-in-construction-management/women-in-construction-management-summer-institute/",isNew:false},
+  {id:"csu_cyber",cat:"summer_program",title:"Cyber Security Camp",org:"Colorado State University",location:"CSU, Fort Collins, CO",area:"",isRemote:false,deadline:"Apr 1, 2026",start:"Jun 9, 2026",end:"Jun 13, 2026",age:"15-18",isPaid:false,cost:"Free",time:"summer",tags:["Free","Cybersecurity","STEM","CSU"],desc:"A free one-week cybersecurity camp at CSU for grades 10-12. Students explore network security, data encryption, and cybersecurity careers.",url:"https://csucybercamp.cs.colostate.edu/",isNew:false},
+  {id:"envision_csu",cat:"summer_program",title:"ENvision Summer Engineering Program",org:"Colorado State University",location:"CSU, Fort Collins, CO",area:"",isRemote:false,deadline:"N/A",start:"May 31, 2026",end:"Jun 6, 2026",age:"16-18",isPaid:false,cost:"Free",time:"summer",tags:["Free","Engineering","Residential","Diversity"],desc:"A free residential program at CSU for rising juniors and seniors to experience engineering student life. Participants live in dorms and attend hands-on sessions. Priority given to underrepresented students.",url:"https://www.engr.colostate.edu/outreach/summer/",isNew:false},
+  {id:"scivet_csu",cat:"summer_program",title:"SciVet Veterinary Science Program",org:"Colorado State University",location:"CSU, Fort Collins, CO",area:"",isRemote:false,deadline:"Feb 3, 2026",start:"Jul 16, 2026",end:"Jul 20, 2026",age:"14-18",isPaid:false,cost:"$1,170",time:"summer",tags:["Veterinary","Animals","STEM","Pre-Vet"],desc:"A comprehensive one-week veterinary program at CSU. Students attend presentations, lab visits, and hands-on activities covering wildlife research and clinical observations.",url:"https://www.cns-eoc.colostate.edu/scivet/",isNew:false},
+  {id:"el_sistema",cat:"summer_program",title:"El Sistema Colorado Summer String Festival",org:"El Sistema Colorado",location:"Denver, CO",area:"",isRemote:false,deadline:"N/A",start:"Jul 21, 2026",end:"Jul 27, 2026",age:"12-18",isPaid:false,cost:"Free",time:"summer",tags:["Music","Free","Orchestra","Arts"],desc:"A free one-week festival for string musicians ages 12-18 exploring leadership and musical excellence. Includes orchestra rehearsals, music history electives, and performances by guest artists.",url:"https://csuspur.org/summer-programs/",isNew:false},
+  {id:"lighthouse_writing",cat:"summer_program",title:"Lighthouse High School Summer Writing Intensive",org:"Lighthouse Writers Workshop",location:"Denver, CO",area:"",isRemote:false,deadline:"N/A",start:"Jul 21, 2026",end:"Jul 25, 2026",age:"13-18",isPaid:false,cost:"$575",time:"summer",tags:["Writing","Creative","Arts","Portfolio"],desc:"A one-week writing intensive in Denver guided by published authors. Participants explore multiple genres and leave with a completed piece of writing and a public reading.",url:"https://lighthousewriters.org/youth/young-writers-summer-camp",isNew:false},
+  {id:"summer_science_astro",cat:"summer_program",title:"Summer Science Program in Astrophysics",org:"Summer Science Program / CU Boulder",location:"University of Colorado Boulder, CO",area:"",isRemote:false,deadline:"Feb 21, 2026",start:"Jun 22, 2026",end:"Jul 27, 2026",age:"16-18",isPaid:false,cost:"Free",time:"summer",tags:["Astrophysics","STEM","Research","Competitive"],desc:"High school juniors locate real asteroids, collect data, and calculate orbital paths in this rigorous five-week program at CU Boulder. Cost ranges from free to $9,800 based on family income.",url:"https://summerscience.org/",isNew:false},
+  {id:"cu_aerospace",cat:"summer_program",title:"CU Science Discovery Aerospace Engineering",org:"University of Colorado Boulder",location:"CU Boulder, Boulder, CO",area:"",isRemote:false,deadline:"May 30, 2026",start:"Jun 9, 2026",end:"Jul 25, 2026",age:"14-18",isPaid:false,cost:"$650",time:"summer",tags:["Aerospace","Engineering","STEM","CU Boulder"],desc:"A week-long aerospace engineering program at CU Boulder. Students work on gliders, airfoils, and jet engines. Two sessions available in June and July.",url:"https://www.colorado.edu/sciencediscovery/aerospace-grades-9-12",isNew:false},
+  {id:"cu_cs_robots",cat:"summer_program",title:"CU Science Discovery Computer Science and Robots",org:"University of Colorado Boulder",location:"CU Boulder, Boulder, CO",area:"",isRemote:false,deadline:"Jul 11, 2026",start:"Jul 21, 2026",end:"Jul 25, 2026",age:"14-18",isPaid:false,cost:"$730",time:"summer",tags:["Robotics","CS","Engineering","CU Boulder"],desc:"A week-long robotics and CS program at CU Boulder. Students design, build, and test robot projects. Each participant takes home their own SparkFun XRP robot kit.",url:"https://www.colorado.edu/sciencediscovery/computer-science-and-robotics-grades-9-12",isNew:false},
+  {id:"cu_stem_research",cat:"summer_program",title:"STEM Research Experience",org:"University of Colorado Boulder",location:"CU Boulder, Boulder, CO",area:"",isRemote:false,deadline:"Mar 30, 2026",start:"Jun 6, 2026",end:"Jul 25, 2026",age:"15-18",isPaid:false,cost:"$2,400",time:"summer",tags:["Research","STEM","Lab","CU Boulder"],desc:"A six-week commuter program at CU Boulder where motivated high schoolers work 15-20 hours per week in real research labs in biology, engineering, and neuroscience.",url:"https://www.colorado.edu/sciencediscovery/programs/stem-research-experience",isNew:false},
+  {id:"sphinx_performance",cat:"summer_program",title:"Sphinx Performance Academy",org:"Sphinx Organization / CU Boulder",location:"CU Boulder, Boulder, CO",area:"",isRemote:false,deadline:"N/A",start:"Jul 20, 2026",end:"Aug 1, 2026",age:"11-17",isPaid:false,cost:"Free",time:"summer",tags:["Music","Free","Strings","Full Scholarship"],desc:"A free full-scholarship two-week intensive at CU Boulder for aspiring violinists, violists, cellists, and bassists ages 11-17. Lessons, masterclasses, recitals, and career enrichment.",url:"https://www.sphinxmusic.org/sphinx-performance-academy",isNew:false},
+  {id:"summet_mines",cat:"summer_program",title:"Summer Multicultural Engineering Training SUMMET",org:"Colorado School of Mines",location:"Colorado School of Mines, Golden, CO",area:"",isRemote:false,deadline:"Feb 28, 2026",start:"Jun 1, 2026",end:"Jun 27, 2026",age:"16-18",isPaid:false,cost:"Free",time:"summer",tags:["Free","Engineering","Diversity","Residential"],desc:"A free residential program at Colorado School of Mines for underrepresented rising juniors and seniors. Students live in dorms and work on engineering design projects across disciplines.",url:"https://www.mines.edu/undergraduate-admissions/summer-multicultural-engineering-training-summet/",isNew:false},
+  {id:"lynx_music",cat:"summer_program",title:"LYNX Arts Camp Music Industry Program",org:"University of Colorado Denver",location:"UC Denver, Denver, CO",area:"",isRemote:false,deadline:"May 15, 2026",start:"Jun 15, 2026",end:"Jun 27, 2026",age:"14-18",isPaid:false,cost:"Varies",time:"summer",tags:["Music","Industry","Arts","Recording"],desc:"One of the best contemporary music summer camps in the US at UC Denver. High schoolers explore performance, songwriting, music business, production, and recording arts.",url:"https://artsandmedia.ucdenver.edu/prospective-students/lynx-camps",isNew:false},
+  {id:"yunasa_west",cat:"summer_program",title:"Yunasa West Gifted Youth Camp",org:"Institute for Educational Advancement",location:"YMCA Camp Shady Brook, Deckers, CO",area:"",isRemote:false,deadline:"Mar 14, 2026",start:"Jun 7, 2026",end:"Jun 14, 2026",age:"13-18",isPaid:false,cost:"$1,950",time:"summer",tags:["Gifted","Camp","Colorado","Self-Discovery"],desc:"A week-long residential camp in Deckers, CO for gifted youth combining traditional camp activities with workshops on self-awareness led by experts in gifted education.",url:"https://educationaladvancement.org/programs/yunasa/",isNew:false},
+  {id:"dmns_intern",cat:"internship",title:"Teen Science Cafe Internship",org:"Denver Museum of Nature and Science",location:"Denver, CO",area:"",isRemote:false,deadline:"Apr 15, 2026",start:"Sep 1, 2026",end:"May 31, 2027",age:"14-18",isPaid:true,cost:"Stipend",time:"yearround",tags:["Science","Paid","Denver","Museum"],desc:"Teens work alongside DMNS staff to organize science cafe events and develop science communication skills. A stipend is provided with flexible hours around school.",url:"https://www.dmns.org/education/teens/",isNew:false},
+  {id:"nasa_hunch",cat:"internship",title:"NASA HUNCH Program",org:"NASA",location:"Remote / School-Based",area:"",isRemote:true,deadline:"Sep 1, 2026",start:"Sep 15, 2026",end:"May 15, 2027",age:"14-18",isPaid:false,cost:"Free",time:"yearround",tags:["NASA","Engineering","Remote","School-Based"],desc:"NASA HUNCH lets students design and build real hardware used on the International Space Station. Teams compete nationally. An extraordinary resume builder for aspiring engineers.",url:"https://hunch.nasa.gov",isNew:false},
+  {id:"dc_gov_intern",cat:"internship",title:"County Government Summer Internship",org:"Douglas County Government",location:"Castle Rock, CO",area:"Castle Rock",isRemote:false,deadline:"Apr 1, 2026",start:"Jun 1, 2026",end:"Aug 15, 2026",age:"16-22",isPaid:true,cost:"Paid",time:"summer",tags:["Government","Paid","Local","Policy"],desc:"Douglas County places interns in departments including planning, communications, public health, and administration. Strong application required with resume and letter of intent.",url:"https://www.douglas.co.us/government/departments/human-resources/employment/",isNew:false},
+  {id:"lockheed_intern",cat:"internship",title:"High School Engineering Intern",org:"Lockheed Martin",location:"Littleton, CO",area:"",isRemote:false,deadline:"Mar 1, 2026",start:"Jun 9, 2026",end:"Aug 1, 2026",age:"17-18",isPaid:true,cost:"Paid",time:"summer",tags:["Engineering","Defense","Paid","Competitive"],desc:"Lockheed Martin's Space division in Littleton places exceptional high school seniors in summer internships. Aerospace engineering, software, and systems design positions. Highly competitive.",url:"https://www.lockheedmartin.com/en-us/who-we-are/students-and-early-career.html",isNew:false},
+  {id:"sky_ridge_shadow",cat:"internship",title:"Healthcare Job Shadow Program",org:"HCA HealthONE Sky Ridge",location:"Lone Tree, CO",area:"Lone Tree",isRemote:false,deadline:"May 15, 2026",start:"Jun 15, 2026",end:"Aug 1, 2026",age:"16-18",isPaid:false,cost:"Free",time:"summer",tags:["Healthcare","Pre-Med","Shadow","Local"],desc:"Sky Ridge Medical Center connects aspiring healthcare professionals with physicians, nurses, and allied health staff. Students observe clinical and administrative operations.",url:"https://www.healthonecares.com/locations/sky-ridge/about-us/volunteers",isNew:false},
+  {id:"nrel_intern",cat:"internship",title:"High School Programs at NREL",org:"National Renewable Energy Laboratory",location:"Golden, CO",area:"",isRemote:false,deadline:"Feb 28, 2026",start:"Jun 1, 2026",end:"Aug 8, 2026",age:"16-18",isPaid:true,cost:"Paid",time:"summer",tags:["Energy","STEM","Paid","Colorado"],desc:"NREL places high school students in paid summer research alongside scientists working on solar, wind, and energy storage technologies. Strong math and science background required.",url:"https://www.nrel.gov/about/education-students",isNew:false},
+  {id:"dcyc_intern",cat:"internship",title:"Youth Commission Leadership Internship",org:"Douglas County Youth Commission",location:"Highlands Ranch, CO",area:"Highlands Ranch",isRemote:false,deadline:"May 1, 2026",start:"Jun 1, 2026",end:"Aug 31, 2026",age:"14-18",isPaid:false,cost:"Free",time:"summer",tags:["Civic","Leadership","Local"],desc:"Intern with DCYC to support community programs, event coordination, and civic engagement initiatives. Build real leadership experience while connecting with county officials.",url:"https://www.douglas.co.us",isNew:false},
+  {id:"stem_launch",cat:"internship",title:"STEM Launch Peer Mentor",org:"STEM Launch DCSD",location:"Highlands Ranch, CO",area:"Highlands Ranch",isRemote:false,deadline:"Apr 30, 2026",start:"Aug 18, 2026",end:"May 31, 2027",age:"16-18",isPaid:false,cost:"Free",time:"yearround",tags:["STEM","Mentorship","Local","DCSD"],desc:"High school students mentor younger students in STEM projects at STEM Launch K-8. Year-round commitment during the school year. Excellent for college applications.",url:"https://stemlaunch.dcsdk12.org",isNew:false},
+  {id:"castle_rock_internship",cat:"internship",title:"Town of Castle Rock Youth Intern",org:"Town of Castle Rock",location:"Castle Rock, CO",area:"Castle Rock",isRemote:false,deadline:"May 1, 2026",start:"Jun 1, 2026",end:"Aug 15, 2026",age:"16-22",isPaid:true,cost:"Paid",time:"summer",tags:["Government","Paid","Castle Rock","Local"],desc:"The Town of Castle Rock offers summer internships in departments such as parks and recreation, communications, and public works. A great way to gain civic experience close to home.",url:"https://www.crgov.com/Jobs.aspx",isNew:true},
+  {id:"parker_rec_internship",cat:"internship",title:"Recreation Intern",org:"Town of Parker Recreation",location:"Parker, CO",area:"Parker",isRemote:false,deadline:"Apr 15, 2026",start:"Jun 1, 2026",end:"Aug 31, 2026",age:"16-22",isPaid:true,cost:"Paid",time:"summer",tags:["Recreation","Paid","Parker","Local"],desc:"Parker Recreation hires summer interns to assist with youth programs, sports camps, and community events. Great hands-on experience in recreation management and community service.",url:"https://www.parkeronline.org/recreation",isNew:true},
+  {id:"dc_libraries_vol",cat:"volunteer",title:"Youth Volunteer Program",org:"Douglas County Libraries",location:"Highlands Ranch, CO",area:"Highlands Ranch",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"13-18",isPaid:false,cost:"Free",time:"yearround",tags:["Local","Flexible","Community","Library"],desc:"Year-round volunteer opportunities for teens including shelving books, assisting with programs, and supporting community events. Hours count toward school service requirements.",url:"https://www.douglascountylibraries.org/volunteering",isNew:false},
+  {id:"hrca_vol",cat:"volunteer",title:"Community Events Volunteer",org:"Highlands Ranch Community Association",location:"Highlands Ranch, CO",area:"Highlands Ranch",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"14-22",isPaid:false,cost:"Free",time:"yearround",tags:["Local","Events","Community","HRCA"],desc:"HRCA hosts 200+ community events per year and relies on youth volunteers for setup, registration, and cleanup. Great way to build leadership connections in Highlands Ranch.",url:"https://www.hrcaonline.org/about/volunteer",isNew:false},
+  {id:"a_little_help_vol",cat:"volunteer",title:"Neighbor Volunteer",org:"A Little Help",location:"Douglas County, CO",area:"Highlands Ranch",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"13-22",isPaid:false,cost:"Free",time:"yearround",tags:["Seniors","Community","Flexible","Intergenerational"],desc:"A Little Help connects volunteers of all ages with older adults who need support staying independent at home. Help with rides, yard work, errands, snow shoveling, tech help, and friendly check-in calls.",url:"https://alittlehelp.org",isNew:false},
+  {id:"habitat_vol",cat:"volunteer",title:"Build Day Volunteer",org:"Habitat for Humanity South Metro Denver",location:"Highlands Ranch / Lone Tree, CO",area:"Highlands Ranch",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"16-22",isPaid:false,cost:"Free",time:"weekend",tags:["Construction","Community","Weekend","Local"],desc:"Volunteers help build affordable homes in the South Metro Denver area alongside future homeowners. Youth 16+ can participate in build days on weekends. No construction experience needed.",url:"https://www.habitatsmd.org/volunteer",isNew:false},
+  {id:"anchor_vol",cat:"volunteer",title:"Child Development Volunteer",org:"Anchor Center for Blind Children",location:"Denver, CO",area:"",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"15-22",isPaid:false,cost:"Free",time:"yearround",tags:["Special Needs","Children","Denver","Education"],desc:"Anchor Center serves young children who are blind or visually impaired. Volunteers assist in classrooms, support family programming, and help at fundraising events.",url:"https://anchorcenter.org/volunteer",isNew:false},
+  {id:"childrens_hosp_vol",cat:"volunteer",title:"Junior Volunteer Program",org:"Children's Hospital Colorado",location:"Aurora, CO",area:"",isRemote:false,deadline:"May 1, 2026",start:"Jun 1, 2026",end:"N/A",age:"14-17",isPaid:false,cost:"Free",time:"summer",tags:["Healthcare","Hospital","Summer","Pre-Med"],desc:"Junior volunteers work in non-clinical support roles including child life, family support, and wayfinding. Requires 100-hour commitment over summer. Competitive - apply early.",url:"https://www.childrenscolorado.org/community/volunteer",isNew:false},
+  {id:"sos_vol",cat:"volunteer",title:"Youth Mentor Volunteer",org:"SOS Outreach",location:"Highlands Ranch, CO",area:"Highlands Ranch",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"16-22",isPaid:false,cost:"Free",time:"seasonal",tags:["Mentorship","Outdoors","Youth","Skiing"],desc:"SOS Outreach uses outdoor adventure to mentor underserved youth. Volunteers assist on ski and outdoor trips, helping younger participants build confidence. Mountain experience helpful.",url:"https://sosoutreach.org/volunteer",isNew:false},
+  {id:"dumb_friends_vol",cat:"volunteer",title:"Animal Care Volunteer",org:"Dumb Friends League",location:"Denver / Englewood, CO",area:"",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"15-22",isPaid:false,cost:"Free",time:"yearround",tags:["Animals","Shelter","Denver","Flexible"],desc:"Colorado's largest animal shelter welcomes youth for animal socialization, kennel enrichment, and adoption event support. Shifts available weekdays and weekends.",url:"https://www.ddfl.org/volunteer",isNew:false},
+  {id:"food_bank_vol",cat:"volunteer",title:"Food Sorting Volunteer",org:"Food Bank of the Rockies",location:"Commerce City, CO",area:"",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"13-22",isPaid:false,cost:"Free",time:"yearround",tags:["Food Insecurity","Physical","Group Friendly","Weekend"],desc:"Volunteers sort and pack food donations at the warehouse. Great for school groups and individuals. 3-hour shifts available weekdays and weekends.",url:"https://www.foodbankrockies.org/volunteer",isNew:false},
+  {id:"foothills_vol",cat:"volunteer",title:"Animal Welfare Advocate Volunteer",org:"Foothills Animal Shelter",location:"Golden, CO",area:"",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"13-22",isPaid:false,cost:"Free",time:"yearround",tags:["Animals","Shelter","Golden","Teen Friendly"],desc:"Foothills Animal Shelter welcomes teen volunteers for dog walking, cat socialization, and adoption events. Youth 13-17 must have a parent volunteer for the first 3 months.",url:"https://www.foothillsanimalshelter.org/volunteer",isNew:false},
+  {id:"foundation_dcs_vol",cat:"volunteer",title:"Foundation for Douglas County Schools Volunteer",org:"Foundation for Douglas County Schools",location:"Castle Rock, CO",area:"Castle Rock",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"13-22",isPaid:false,cost:"Free",time:"yearround",tags:["Local","Education","Events","Douglas County"],desc:"Volunteer with the Foundation for Douglas County Schools on events like the Apple Awards and the Lend-A-Land School Supply Drive, assembling backpacks for 1,500 students in need.",url:"https://www.foundationdcs.org/volunteer",isNew:false},
+  {id:"backpack_society_vol",cat:"volunteer",title:"High School Community Service Program",org:"Backpack Society",location:"Highlands Ranch, CO",area:"Highlands Ranch",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"13-18",isPaid:false,cost:"Free",time:"yearround",tags:["Food Insecurity","Local","Highlands Ranch","Service Hours"],desc:"Backpack Society in Highlands Ranch offers a dedicated high school volunteer program for teens earning community service hours. Volunteers fight food insecurity through food drives and distribution.",url:"https://www.backpacksociety.org/high-school-volunteer",isNew:false},
+  {id:"humane_colorado_vol",cat:"volunteer",title:"Youth Volunteer and Summer Teen Program",org:"Humane Colorado",location:"Denver Metro, CO",area:"",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"16-22",isPaid:false,cost:"Free",time:"yearround",tags:["Animals","Shelter","Summer","Service Hours"],desc:"Humane Colorado offers a Summer Teen Program for 16-17 year olds earning service hours plus year-round volunteer roles in animal care, dog walking, and adoptions. $30 onboarding fee.",url:"https://humanecolorado.org/volunteer/",isNew:false},
+  {id:"castle_rock_vol",cat:"volunteer",title:"Castle Rock Volunteer Corps",org:"Town of Castle Rock",location:"Castle Rock, CO",area:"Castle Rock",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"14-22",isPaid:false,cost:"Free",time:"yearround",tags:["Local","Civic","Castle Rock","Community"],desc:"The Town of Castle Rock welcomes youth volunteers for community events, parks maintenance, and special programs. Great way to give back to your local government and earn service hours.",url:"https://www.crgov.com/volunteer",isNew:true},
+  {id:"parker_vol",cat:"volunteer",title:"Parker Task Force Volunteer",org:"Parker Task Force",location:"Parker, CO",area:"Parker",isRemote:false,deadline:"N/A",start:"Ongoing",end:"N/A",age:"13-22",isPaid:false,cost:"Free",time:"yearround",tags:["Food Insecurity","Parker","Local","Community"],desc:"Parker Task Force is a local food bank serving families in Parker and the surrounding area. Teen volunteers help sort donations, stock shelves, and assist families during distribution.",url:"https://www.parkertaskforce.org/volunteer",isNew:true},
+  {id:"king_soopers_job",cat:"job",title:"Courtesy Clerk / Bagger",org:"King Soopers",location:"Highlands Ranch, CO",area:"Highlands Ranch",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Entry Level","Flexible","Grocery","Part-Time"],desc:"King Soopers regularly hires teens 16+ as courtesy clerks. Responsibilities include bagging groceries, collecting carts, and assisting customers. Flexible scheduling around school.",url:"https://www.kingsoopers.com/careers",isNew:false},
+  {id:"chick_fil_a_job",cat:"job",title:"Team Member",org:"Chick-fil-A",location:"Highlands Ranch / Lone Tree, CO",area:"Highlands Ranch",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Food Service","Part-Time","Customer Service"],desc:"One of the best first employers for teens - structured training, closed Sundays, scholarship opportunities. Front-of-house and kitchen roles available at multiple local locations.",url:"https://www.chick-fil-a.com/careers",isNew:false},
+  {id:"hrca_job",cat:"job",title:"Recreation Center Attendant",org:"Highlands Ranch Community Association",location:"Highlands Ranch, CO",area:"Highlands Ranch",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"15+",isPaid:true,cost:"Paid",time:"yearround",tags:["Recreation","Part-Time","Local","HRCA"],desc:"HRCA's four recreation centers hire youth for front desk, fitness floor, and pool monitoring. Free rec center membership included. Multiple positions open year-round.",url:"https://www.hrcaonline.org/jobs",isNew:false},
+  {id:"hr_golf_job",cat:"job",title:"Golf Course Cart Attendant",org:"Highlands Ranch Golf Club",location:"Highlands Ranch, CO",area:"Highlands Ranch",isRemote:false,deadline:"N/A",start:"Apr 1, 2026",end:"Oct 31, 2026",age:"16+",isPaid:true,cost:"Paid",time:"seasonal",tags:["Seasonal","Outdoor","Golf","Part-Time"],desc:"Seasonal position managing golf carts, maintaining the pro shop, and assisting golfers. Tips supplement hourly wage. Season runs April through October.",url:"https://www.highlandsranchgolfclub.com",isNew:false},
+  {id:"dcsd_aide_job",cat:"job",title:"Paraprofessional / Classroom Aide",org:"Douglas County School District",location:"Douglas County, CO",area:"",isRemote:false,deadline:"N/A",start:"Aug 18, 2026",end:"N/A",age:"18+",isPaid:true,cost:"Paid",time:"yearround",tags:["Education","School Year","Local","DCSD"],desc:"DCSD hires paraprofessionals to support teachers in K-12 classrooms. Great for students pursuing education or psychology. Must be 18+ with a high school diploma.",url:"https://www.dcsdk12.org/careers",isNew:false},
+  {id:"library_page_job",cat:"job",title:"Library Page",org:"Douglas County Libraries",location:"Highlands Ranch, CO",area:"Highlands Ranch",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Library","Part-Time","Local","Quiet Work"],desc:"Library pages shelve materials, assist patrons, and maintain organization. Ideal for students who enjoy a structured environment. Evening and weekend shifts available.",url:"https://www.douglascountylibraries.org/about/jobs",isNew:false},
+  {id:"target_job",cat:"job",title:"Guest Advocate / Cashier",org:"Target",location:"Highlands Ranch / Lone Tree, CO",area:"Highlands Ranch",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Retail","Part-Time","Entry Level","Flexible"],desc:"Target hires team members for checkout, sales floor, and fulfillment. Competitive starting wage, employee discount, and flexible scheduling. Multiple local locations.",url:"https://jobs.target.com",isNew:false},
+  {id:"broncos_gameday",cat:"job",title:"Game Day Staff",org:"Denver Broncos / Empower Field",location:"Denver, CO",area:"",isRemote:false,deadline:"N/A",start:"Sep 1, 2026",end:"Dec 31, 2026",age:"16+",isPaid:true,cost:"Paid",time:"seasonal",tags:["Sports","Events","Seasonal","NFL"],desc:"Empower Field hires seasonal game day staff for concessions, ushering, and guest services. Shifts on home game days (8-10 per season). Great experience for sports fans.",url:"https://www.denverbroncos.com/stadium/employment",isNew:false},
+  {id:"build_a_bear_job",cat:"job",title:"Sales Associate",org:"Build-A-Bear Workshop - Park Meadows",location:"Lone Tree, CO",area:"Lone Tree",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Retail","Part-Time","Fun","Mall"],desc:"Build-A-Bear at Park Meadows hires teens 16+ for guest-facing sales roles. Help customers create stuffed animals, handle transactions, and keep the store running. One of the most fun first jobs at the mall.",url:"https://corporate.buildabear.com/careers",isNew:false},
+  {id:"abercrombie_job",cat:"job",title:"Brand Representative",org:"Abercrombie and Fitch - Park Meadows",location:"Lone Tree, CO",area:"Lone Tree",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Retail","Fashion","Mall","Entry Level"],desc:"Abercrombie and Fitch at Park Meadows hires brand representatives 16+ for part-time retail roles. Responsibilities include customer engagement, merchandising, and maintaining the store floor.",url:"https://www.abercrombie.com/anf/careers",isNew:false},
+  {id:"escape_game_job",cat:"job",title:"Adventure Guide",org:"The Escape Game - Park Meadows",location:"Lone Tree, CO",area:"Lone Tree",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Entertainment","Customer Service","Mall","Fun"],desc:"The Escape Game at Park Meadows hires Adventure Guides starting at $16/hr to host immersive escape room experiences. Great for teens who enjoy storytelling and creating memorable moments.",url:"https://theescapegame.com/careers",isNew:false},
+  {id:"hollister_job",cat:"job",title:"Sales Associate",org:"Hollister Co. - Park Meadows",location:"Lone Tree, CO",area:"Lone Tree",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Retail","Fashion","Mall","Teen Friendly"],desc:"Hollister Co. at Park Meadows frequently hires teens 16+ for part-time sales floor and customer service roles. Flexible scheduling around school and employee discount included.",url:"https://www.hollisterco.com/webapp/wcs/stores/servlet/en/hollisterco/careers",isNew:false},
+  {id:"warby_parker_job",cat:"job",title:"Sales Advisor",org:"Warby Parker - Park Meadows",location:"Lone Tree, CO",area:"Lone Tree",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"17+",isPaid:true,cost:"Paid",time:"yearround",tags:["Retail","Optical","Mall","Customer Service"],desc:"Warby Parker at Park Meadows is looking for sales advisors to deliver exceptional customer service and help customers find the perfect frames. Great for 17-18 year olds building professional skills.",url:"https://www.warbyparker.com/jobs",isNew:false},
+  {id:"banter_pagoda_job",cat:"job",title:"Retail Sales Associate",org:"Banter by Piercing Pagoda - Park Meadows",location:"Lone Tree, CO",area:"Lone Tree",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Retail","Jewelry","Mall","Entry Level"],desc:"Banter by Piercing Pagoda at Park Meadows hires sales associates starting at $15-$16/hr for kiosk-based jewelry retail. Tuition reimbursement and DCA courses available.",url:"https://www.signetjewelers.com/careers",isNew:false},
+  {id:"levis_job",cat:"job",title:"Sales Associate",org:"Levi's - Park Meadows",location:"Lone Tree, CO",area:"Lone Tree",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Retail","Fashion","Mall","Entry Level"],desc:"Levi's at Park Meadows hires part-time sales associates 16+ for retail floor and customer service roles. Employee discount on iconic denim and apparel included.",url:"https://careers.levi.com",isNew:false},
+  {id:"cheesecake_factory_job",cat:"job",title:"Host / Busser / Takeout",org:"The Cheesecake Factory - Park Meadows",location:"Lone Tree, CO",area:"Lone Tree",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Food Service","Restaurant","Tips","Mall"],desc:"The Cheesecake Factory at Park Meadows hires teens 16+ for host, busser, and takeout roles. A high-volume restaurant with good tips and strong training. Room to grow into server roles at 18.",url:"https://www.thecheesecakefactory.com/careers",isNew:false},
+  {id:"jersey_mikes_castle_rock",cat:"job",title:"Crew Member",org:"Jersey Mike's Subs",location:"Castle Rock, CO",area:"Castle Rock",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"14+",isPaid:true,cost:"Paid",time:"yearround",tags:["Food Service","Castle Rock","Entry Level","14+"],desc:"Jersey Mike's in Castle Rock hires crew members as young as 14 to greet customers, prepare subs, and keep the store clean. A great first job with flexible hours and no experience needed.",url:"https://www.jerseymikes.com/careers",isNew:true},
+  {id:"noodles_castle_rock",cat:"job",title:"Restaurant Team Member",org:"Noodles and Company",location:"Castle Rock, CO",area:"Castle Rock",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Food Service","Castle Rock","Part-Time","Flexible"],desc:"Noodles and Company in Castle Rock hires team members 16+ as cashiers, servers, and guest service staff. Pay starts at $15/hr+ with flexible scheduling perfect for students.",url:"https://www.noodles.com/careers",isNew:true},
+  {id:"under_armour_castle_rock",cat:"job",title:"Seasonal Stock Associate",org:"Under Armour",location:"Castle Rock, CO",area:"Castle Rock",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"seasonal",tags:["Retail","Castle Rock","Seasonal","Sports"],desc:"Under Armour in Castle Rock hires seasonal stock associates for inventory, stocking, and store support. Employee discount on athletic apparel and flexible part-time hours available.",url:"https://careers.underarmour.com",isNew:true},
+  {id:"mcdonalds_parker",cat:"job",title:"Crew Member",org:"McDonald's",location:"Parker, CO",area:"Parker",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"14+",isPaid:true,cost:"Paid",time:"yearround",tags:["Food Service","Parker","Entry Level","14+"],desc:"McDonald's in Parker hires crew members as young as 14 for front counter, drive-thru, and kitchen roles. Flexible scheduling, paid training, and tuition assistance available.",url:"https://careers.mcdonalds.com",isNew:true},
+  {id:"urban_air_parker",cat:"job",title:"Party Host / Team Member",org:"Urban Air Adventure Park",location:"Parker / Centennial, CO",area:"Parker",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Entertainment","Parker","Fun","Customer Service"],desc:"Urban Air Adventure Park near Parker hires party hosts and team members 16+ for an exciting entertainment environment. Tips included for party host roles. Great for energetic teens.",url:"https://www.urbanair.com/careers",isNew:true},
+  {id:"ritas_ice_parker",cat:"job",title:"Team Member",org:"Rita's Italian Ice - Parker",location:"Parker, CO",area:"Parker",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"seasonal",tags:["Food Service","Parker","Seasonal","Fun"],desc:"Rita's Italian Ice in Parker hires team members 16+ for a fun, customer-facing seasonal role. Perfect for spring and summer. No experience needed and tips are encouraged.",url:"https://ritas.com/franchise/careers",isNew:true},
+  {id:"sprouts_parker",cat:"job",title:"Grocery Clerk",org:"Sprouts Farmers Market",location:"Parker, CO",area:"Parker",isRemote:false,deadline:"N/A",start:"N/A",end:"N/A",age:"16+",isPaid:true,cost:"Paid",time:"yearround",tags:["Grocery","Parker","Part-Time","Entry Level"],desc:"Sprouts Farmers Market in Parker hires grocery clerks 16+ with starting pay of $16.90-$21.95/hr. Responsibilities include stocking, customer service, and maintaining the store floor.",url:"https://careers.sprouts.com",isNew:true}
+];
+
+const LOCAL_AREAS = ["Highlands Ranch","Castle Rock","Lone Tree","Parker","Castle Pines"];
+let currentCat="all", currentFilter="all", currentArea="all", currentTime="all", currentSearch="";
+let savedIds=JSON.parse(localStorage.getItem("dcyc_saved")||"[]");
+
+function catLabel(c){return{job:"Job",internship:"Internship",volunteer:"Volunteer",summer_program:"Summer Program"}[c]||c;}
+
+function matchesFilter(o){
+  if(currentFilter==="all") return true;
+  if(currentFilter==="paid") return o.isPaid===true;
+  if(currentFilter==="free") return o.cost==="Free"||(!o.isPaid&&o.cost!=="Paid");
+  if(currentFilter==="remote") return o.isRemote;
+  return true;
+}
+function matchesArea(o){
+  if(currentArea==="all") return true;
+  return o.area===currentArea||o.location.includes(currentArea);
+}
+function matchesTime(o){
+  if(currentTime==="all") return true;
+  return o.time===currentTime;
+}
+function matchesSearch(o){
+  if(!currentSearch) return true;
+  const q=currentSearch.toLowerCase();
+  return o.title.toLowerCase().includes(q)||o.org.toLowerCase().includes(q)||o.tags.some(t=>t.toLowerCase().includes(q))||o.location.toLowerCase().includes(q);
+}
+function getFiltered(){
+  return opportunities.filter(o=>{
+    const catOk=currentCat==="all"||o.cat===currentCat;
+    return catOk&&matchesFilter(o)&&matchesArea(o)&&matchesTime(o)&&matchesSearch(o);
+  });
+}
+
+function paidDisplay(o){
+  if(o.cost==="Free") return '<span class="paid-badge paid-yes">Free</span>';
+  if(o.isPaid||o.cost==="Paid") return '<span class="paid-badge paid-yes">Paid</span>';
+  if(o.cost==="Stipend") return '<span class="paid-badge paid-yes">Stipend</span>';
+  return '<span class="paid-badge paid-no">Unpaid</span>';
+}
+
+function renderCards(){
+  const filtered=getFiltered();
+  document.getElementById("resultsInfo").innerHTML=`Showing <strong>${filtered.length}</strong> of ${opportunities.length} opportunities`;
+  const grid=document.getElementById("cardsGrid");
+  if(filtered.length===0){
+    grid.innerHTML='<div class="empty-state"><div class="empty-icon">&#128269;</div><div class="empty-title">No results found</div><div class="empty-sub">Try a different search or filter.</div></div>';
+    return;
+  }
+  grid.innerHTML=filtered.map((o,i)=>{
+    const isSaved=savedIds.includes(o.id);
+    const delay=Math.min(i*35,400);
+    const areaTag=o.area?`<span class="area-badge">&#128205; ${o.area}</span>`:"";
+    return `<div class="card" data-cat="${o.cat}" style="animation-delay:${delay}ms">
+      <div class="card-header">
+        <div class="card-title">${o.title}</div>
+        <button class="save-btn ${isSaved?"saved":""}" data-id="${o.id}">${isSaved?"&#11088;":"&#9734;"}</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <span class="cat-badge ${o.cat}">${catLabel(o.cat)}</span>
+        ${o.isNew?'<span class="new-badge">New</span>':""}
+        ${areaTag}
+        <span class="card-org"><span class="card-org-dot"></span>${o.org}</span>
+      </div>
+      <div class="card-meta">
+        <div class="meta-pill">&#128205; ${o.location}</div>
+        <div class="meta-pill">&#128197; ${o.deadline!=="N/A"?"Due "+o.deadline:o.start!=="N/A"?"Starts "+o.start:"Ongoing"}</div>
+        <div class="meta-pill">&#128100; Ages ${o.age}</div>
+      </div>
+      <p class="card-desc">${o.desc}</p>
+      <div class="card-tags">${o.tags.slice(0,4).map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+      <div class="card-footer">
+        ${paidDisplay(o)}
+        <a href="${o.url}" target="_blank" rel="noopener" class="apply-btn">Apply / Learn More &#8599;</a>
+      </div>
+    </div>`;
+  }).join("");
+  document.querySelectorAll(".save-btn").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const id=btn.dataset.id;
+      if(savedIds.includes(id)){savedIds=savedIds.filter(s=>s!==id);btn.classList.remove("saved");btn.innerHTML="&#9734;";}
+      else{savedIds.push(id);btn.classList.add("saved");btn.innerHTML="&#11088;";}
+      localStorage.setItem("dcyc_saved",JSON.stringify(savedIds));
+      updateSavedCount();
+    });
+  });
+}
+
+function updateCounts(){
+  const cats=["all","summer_program","internship","job","volunteer"];
+  cats.forEach(cat=>{
+    const cnt=cat==="all"?opportunities.length:opportunities.filter(o=>o.cat===cat).length;
+    const el=document.getElementById("count-"+cat);
+    if(el) el.textContent=cnt;
+  });
+}
+
+function updateHeroStats(){
+  const cats={summer_program:0,internship:0,job:0,volunteer:0};
+  opportunities.forEach(o=>{if(cats[o.cat]!==undefined)cats[o.cat]++;});
+  document.getElementById("statSummer").textContent=cats.summer_program;
+  document.getElementById("statIntern").textContent=cats.internship;
+  document.getElementById("statJobs").textContent=cats.job;
+  document.getElementById("statVol").textContent=cats.volunteer;
+}
+
+function updateSavedCount(){
+  const el=document.getElementById("savedCount");
+  el.style.display=savedIds.length>0?"flex":"none";
+  el.textContent=savedIds.length;
+}
+
+function renderSavedPanel(){
+  const list=document.getElementById("savedList");
+  if(savedIds.length===0){
+    list.innerHTML='<div class="saved-empty"><div class="saved-empty-icon">&#11088;</div><div class="saved-empty-text">No saved opportunities yet.<br/>Click &#9734; on any card to save it.</div></div>';
+    return;
+  }
+  const saved=opportunities.filter(o=>savedIds.includes(o.id));
+  list.innerHTML=saved.map(o=>`
+    <a href="${o.url}" target="_blank" rel="noopener" class="saved-item">
+      <div class="saved-item-info">
+        <div class="saved-item-title">${o.title}</div>
+        <div class="saved-item-org">${o.org} &middot; ${catLabel(o.cat)}</div>
+      </div>
+      <div class="saved-item-arrow">&#8599;</div>
+    </a>
+  `).join("");
+}
+
+// TABS
+document.querySelectorAll(".tab").forEach(tab=>{
+  tab.addEventListener("click",()=>{
+    document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+    tab.classList.add("active");
+    currentCat=tab.dataset.cat;
+    document.querySelectorAll(".nav-link,.mobile-nav-link").forEach(l=>l.classList.toggle("active",l.dataset.cat===currentCat));
+    renderCards();
+  });
+});
+
+// NAV LINKS
+document.querySelectorAll(".nav-link,.mobile-nav-link").forEach(link=>{
+  link.addEventListener("click",e=>{
+    e.preventDefault();
+    document.querySelectorAll(".nav-link,.mobile-nav-link").forEach(l=>l.classList.remove("active"));
+    link.classList.add("active");
+    currentCat=link.dataset.cat;
+    document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.cat===currentCat));
+    document.getElementById("mobileMenu").classList.remove("open");
+    renderCards();
+    window.scrollTo({top:document.querySelector("main").offsetTop-80,behavior:"smooth"});
+  });
+});
+
+// STATUS FILTERS
+document.querySelectorAll("[data-filter]").forEach(chip=>{
+  chip.addEventListener("click",()=>{
+    document.querySelectorAll("[data-filter]").forEach(c=>c.classList.remove("active"));
+    chip.classList.add("active");
+    currentFilter=chip.dataset.filter;
+    renderCards();
+  });
+});
+
+// AREA FILTERS
+document.querySelectorAll("[data-area]").forEach(chip=>{
+  chip.addEventListener("click",()=>{
+    document.querySelectorAll("[data-area]").forEach(c=>c.classList.remove("active"));
+    chip.classList.add("active");
+    currentArea=chip.dataset.area;
+    renderCards();
+  });
+});
+
+// TIME FILTERS
+document.querySelectorAll("[data-time]").forEach(chip=>{
+  chip.addEventListener("click",()=>{
+    document.querySelectorAll("[data-time]").forEach(c=>c.classList.remove("active"));
+    chip.classList.add("active");
+    currentTime=chip.dataset.time;
+    renderCards();
+  });
+});
+
+// SEARCH
+document.getElementById("searchInput").addEventListener("input",e=>{
+  currentSearch=e.target.value;
+  renderCards();
+});
+
+// SAVED PANEL
+document.getElementById("savedBtn").addEventListener("click",()=>{
+  document.getElementById("savedPanel").classList.add("open");
+  document.getElementById("savedOverlay").classList.add("open");
+  renderSavedPanel();
+});
+document.getElementById("closePanel").addEventListener("click",()=>{
+  document.getElementById("savedPanel").classList.remove("open");
+  document.getElementById("savedOverlay").classList.remove("open");
+});
+document.getElementById("savedOverlay").addEventListener("click",()=>{
+  document.getElementById("savedPanel").classList.remove("open");
+  document.getElementById("savedOverlay").classList.remove("open");
+});
+
+// HAMBURGER
+document.getElementById("hamburger").addEventListener("click",()=>{
+  document.getElementById("mobileMenu").classList.toggle("open");
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+  updateHeroStats();
+  updateCounts();
+  updateSavedCount();
+  renderCards();
+});
+</script>
+</body>
+</html>
