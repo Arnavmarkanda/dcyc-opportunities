@@ -171,24 +171,52 @@ def main():
     existing_urls = {match.group(1).rstrip("/").lower() for match in re.finditer(r'url:"(https?://[^\"]+)"', html)}
     results = []
     seen = set()
-    for query in SEARCHES:
-        print(f"Searching: {query}")
-        for result in search_web(query):
-            url = canonical_url(result["url"])
-            key = (url or "").rstrip("/").lower()
-            if not url or key in seen or key in existing_urls:
-                continue
-            seen.add(key)
-            results.append({**result, "url": url})
-        time.sleep(1)
+    test_mode = os.environ.get("DCYC_SCANNER_TEST") == "1"
+    test_candidate = {
+        "relevant": True,
+        "title": "TEMPORARY TEST — DO NOT APPLY: Scanner Listing Verification",
+        "category": "volunteer",
+        "org": "Douglas County Youth Commission",
+        "loc": "Highlands Ranch, CO",
+        "area": "Highlands Ranch",
+        "remote": False,
+        "deadline": None,
+        "start": None,
+        "end": None,
+        "age": "Test only",
+        "paid": False,
+        "cost": "Test only",
+        "time": "yearround",
+        "tags": ["TEMPORARY TEST", "Do Not Apply"],
+        "desc": "Temporary test listing to verify automated insertion and live website rendering. This is not a real opportunity and must be removed after the test.",
+    }
+    if test_mode:
+        print("TEST MODE: inserting a clearly labeled temporary listing through the normal validation and page-update path.")
+        results = [{"title": test_candidate["title"], "url": "https://www.douglas.co.us/", "snippet": "Temporary scanner test page for the Douglas County Youth Commission."}]
+    else:
+        for query in SEARCHES:
+            print(f"Searching: {query}")
+            for result in search_web(query):
+                url = canonical_url(result["url"])
+                key = (url or "").rstrip("/").lower()
+                if not url or key in seen or key in existing_urls:
+                    continue
+                seen.add(key)
+                results.append({**result, "url": url})
+            time.sleep(1)
 
     additions = []
     for result in results:
-        fetched = fetch_official_page(result["url"])
-        if not fetched:
-            continue
-        final_url, text = fetched
-        candidate = extract_candidate(result, final_url, text)
+        if test_mode:
+            final_url = result["url"]
+            text = "Douglas County Youth Commission temporary scanner test for youth."
+            candidate = test_candidate
+        else:
+            fetched = fetch_official_page(result["url"])
+            if not fetched:
+                continue
+            final_url, text = fetched
+            candidate = extract_candidate(result, final_url, text)
         if not valid(candidate, final_url, text):
             continue
         normalized = final_url.rstrip("/").lower()

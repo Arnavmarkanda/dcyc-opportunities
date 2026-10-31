@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: '0 16 * * 1'  # Every Monday at 9:00 AM Mountain Time (UTC-7 standard)
   workflow_dispatch:
+    inputs:
+      test_mode:
+        description: "Publish a temporary test listing for the live rendering check; remove it afterward."
+        required: false
+        default: false
+        type: boolean
  
 jobs:
   scan:
@@ -27,6 +33,7 @@ jobs:
       - name: Discover and validate new opportunities
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DCYC_SCANNER_TEST: ${{ inputs.test_mode && '1' || '0' }}
         run: python agent/discover.py
  
       - name: Commit and push if changes were made
