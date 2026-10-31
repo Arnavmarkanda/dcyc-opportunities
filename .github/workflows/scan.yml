@@ -2,7 +2,7 @@ name: DCYC Opportunity Scanner
  
 on:
   schedule:
-    - cron: '0 16 * * 1'  # Every Monday at 9:00 AM Mountain Time (UTC-7 standard)
+    - cron: '0 16 1 * *'  # First day of each month at 9:00 AM MST / 10:00 AM MDT
   workflow_dispatch:
  
 jobs:
