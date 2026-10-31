@@ -2,8 +2,8 @@ name: DCYC Opportunity Scanner
  
 on:
   schedule:
-    - cron: '0 9 * * *'  # Runs every day at 9:00 AM UTC (3:00 AM Mountain Time)
-  workflow_dispatch:      # Allows manual trigger from GitHub Actions tab
+    - cron: '0 16 * * 1'  # Every Monday at 9:00 AM Mountain Time (UTC-7 standard)
+  workflow_dispatch:
  
 jobs:
   scan:
@@ -24,16 +24,16 @@ jobs:
       - name: Install dependencies
         run: pip install anthropic requests beautifulsoup4
  
-      - name: Run scanning agent
+      - name: Discover and validate new opportunities
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python agent/scan.py
+        run: python agent/discover.py
  
       - name: Commit and push if changes were made
         run: |
           git config --global user.name "DCYC Scanner Bot"
           git config --global user.email "scanner@dcyc-opportunities.netlify.app"
           git add index.html
-          git diff --staged --quiet || git commit -m "Auto-update: opportunity data refreshed on $(date '+%Y-%m-%d')"
+          git diff --staged --quiet || git commit -m "Auto-discover verified opportunities on $(date '+%Y-%m-%d')"
           git push
           
