@@ -236,7 +236,8 @@ def main():
     pos = html.find(marker, html.find("const opps = ["))
     if pos < 0:
         raise RuntimeError("Could not locate the opportunity list in index.html")
-    html = html[:pos] + "\n" + "\n".join(additions) + "\n" + html[pos:]
+    separator = "" if html[:pos].rstrip().endswith(",") else ","
+    html = html[:pos] + separator + "\n" + "\n".join(additions) + "\n" + html[pos:]
     with open(INDEX_FILE, "w", encoding="utf-8", newline="") as file:
         file.write(html)
     print(f"Added {len(additions)} validated opportunity/opportunities to index.html.")
