@@ -192,7 +192,7 @@ def main():
     }
     if test_mode:
         print("TEST MODE: inserting a clearly labeled temporary listing through the normal validation and page-update path.")
-        results = [{"title": test_candidate["title"], "url": "https://www.douglas.co.us/", "snippet": "Temporary scanner test page for the Douglas County Youth Commission."}]
+        results = [{"title": test_candidate["title"], "url": "https://www.douglas.co.us/youth-commission-scanner-test", "snippet": "Temporary scanner test page for the Douglas County Youth Commission."}]
     else:
         for query in SEARCHES:
             print(f"Searching: {query}")
