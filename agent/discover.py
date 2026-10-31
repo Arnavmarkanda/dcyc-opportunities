@@ -188,7 +188,7 @@ def main():
         "cost": "Test only",
         "time": "yearround",
         "tags": ["TEMPORARY TEST", "Do Not Apply"],
-        "desc": "Temporary test listing to verify automated insertion and live website rendering. This is not a real opportunity and must be removed after the test.",
+        "desc": "Temporary test listing for youth to verify automated insertion and live website rendering. This is not a real opportunity and must be removed after the test.",
     }
     if test_mode:
         print("TEST MODE: inserting a clearly labeled temporary listing through the normal validation and page-update path.")
