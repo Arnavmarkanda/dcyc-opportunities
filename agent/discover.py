@@ -211,6 +211,7 @@ def main():
             final_url = result["url"]
             text = "Douglas County Youth Commission temporary scanner test for youth."
             candidate = test_candidate
+            print(f"TEST validation={valid(candidate, final_url, text)} url_already_present={final_url.rstrip('/').lower() in existing_urls}")
         else:
             fetched = fetch_official_page(result["url"])
             if not fetched:
